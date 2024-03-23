@@ -1,17 +1,24 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import {Text} from './src/components/Text/Text';
+import {Button} from './src/components/Button/Button';
+import {ThemeProvider} from '@shopify/restyle';
+import {theme} from './src/theme/theme';
 
 function App(): JSX.Element {
   return (
-    <SafeAreaView>
-      <Text preset="headingLarge" style={{color: '#000'}}>
-        Hello, world!
-      </Text>
-      <Text preset="headingLarge" style={{color: '#000'}}>
-        Hello, world! 2
-      </Text>
-    </SafeAreaView>
+    <ThemeProvider theme={theme}>
+      <SafeAreaView>
+        <View style={{paddingHorizontal: 24}}>
+          <Text preset="headingLarge" style={{color: '#000'}}>
+            Hello, world!
+          </Text>
+          <Button title="Entrar" mb="s24" />
+          <Button loading />
+        </View>
+      </SafeAreaView>
+    </ThemeProvider>
   );
 }
 
