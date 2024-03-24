@@ -14,7 +14,10 @@ function App(): JSX.Element {
           <Text preset="headingLarge" style={{color: '#000'}}>
             Hello, world!
           </Text>
-          <Button title="Entrar" mb="s24" />
+          <Button title="Primary" mb="s24" />
+          <Button title="Primary" disabled mb="s24" />
+          <Button title="Outline" preset="outline" mb="s24" />
+          <Button title="Outline" disabled preset="outline" mb="s24" />
           <Button loading />
         </View>
       </SafeAreaView>
