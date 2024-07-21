@@ -1,23 +1,17 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import {
-  Text as RNText,
-  TextProps as RNTextProps,
-  TextStyle,
-} from 'react-native';
+import {TextStyle} from 'react-native';
 import {createText} from '@shopify/restyle';
-import {Theme} from '../../theme/theme';
+import {Theme} from '@theme';
 
 const SRText = createText<Theme>();
 type SRTextProps = React.ComponentProps<typeof SRText>;
 
-interface TextProps extends SRTextProps {
+export interface TextProps extends SRTextProps {
   preset?: TextVariants;
   bold?: boolean;
   italic?: boolean;
   semiBold?: boolean;
 }
-
 export function Text({
   children,
   preset = 'paragraphMedium',
@@ -28,7 +22,6 @@ export function Text({
   ...sRTextProps
 }: TextProps) {
   const fontFamily = getFontFamily(preset, bold, italic, semiBold);
-
   return (
     <SRText
       color="backgroundContrast"
@@ -44,7 +37,7 @@ function getFontFamily(
   bold?: boolean,
   italic?: boolean,
   semiBold?: boolean,
-): string {
+) {
   if (
     preset === 'headingLarge' ||
     preset === 'headingMedium' ||

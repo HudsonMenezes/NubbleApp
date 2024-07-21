@@ -1,14 +1,17 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import {Text} from '../Text/Text';
-import {TouchableOpacityBox, TouchableOpacityBoxProps} from '../Box/Box';
-import {buttonPresets} from './buttonPressets';
-import {ActivityIndicator} from '../ActivityIndicator/ActivityIndicator';
+
+import {
+  ActivityIndicator,
+  TouchableOpacityBox,
+  TouchableOpacityBoxProps,
+  Text,
+} from '@components';
+import {buttonPresets} from './buttonPresets';
 
 export type ButtonPreset = 'primary' | 'outline';
 
 interface ButtonProps extends TouchableOpacityBoxProps {
-  title?: string;
+  title: string;
   loading?: boolean;
   preset?: ButtonPreset;
   disabled?: boolean;
@@ -26,10 +29,10 @@ export function Button({
     <TouchableOpacityBox
       disabled={disabled || loading}
       paddingHorizontal="s20"
-      borderRadius="s16"
       height={50}
       alignItems="center"
       justifyContent="center"
+      borderRadius="s16"
       {...buttonPreset.container}
       {...touchableOpacityBoxProps}>
       {loading ? (

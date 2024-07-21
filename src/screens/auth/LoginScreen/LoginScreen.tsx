@@ -1,20 +1,20 @@
 import React from 'react';
-import {useForm, Controller} from 'react-hook-form';
-import {Text} from '../../../components/Text/Text';
-import {TextInput} from '../../../components/TextInput/TextInput';
-import {Button} from '../../../components/Button/Button';
-import {Screen} from '../../../components/Screen/Screen';
-import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
+import {useForm} from 'react-hook-form';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../../routes/Routes';
+
+import {
+  Text,
+  Screen,
+  Button,
+  FormTextInput,
+  FormPasswordInput,
+} from '@components';
+import {RootStackParamList} from '@routes';
 import {Alert} from 'react-native';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {LoginSchema, loginSchema} from './loginSchema';
-import {FormTextInput} from '../../../components/Form/FormTextInput';
-import {FormPasswordInput} from '../../../components/Form/FormPasswordInput';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;
-
 export function LoginScreen({navigation}: ScreenProps) {
   const {control, formState, handleSubmit} = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
@@ -26,7 +26,7 @@ export function LoginScreen({navigation}: ScreenProps) {
   });
 
   function submitForm({email, password}: LoginSchema) {
-    Alert.alert('Login', `Email: ${email} ${`\n`}Password: ${password}`);
+    Alert.alert(`Email: ${email} ${`\n`} Senha: ${password}`);
   }
 
   function navigateToSignUpScreen() {
@@ -36,7 +36,6 @@ export function LoginScreen({navigation}: ScreenProps) {
   function navigateToForgotPasswordScreen() {
     navigation.navigate('ForgotPasswordScreen');
   }
-
   return (
     <Screen scrollable>
       <Text marginBottom="s8" preset="headingLarge">
@@ -59,7 +58,7 @@ export function LoginScreen({navigation}: ScreenProps) {
         name="password"
         label="Senha"
         placeholder="Digite sua senha"
-        boxProps={{mb: 's10'}}
+        boxProps={{mb: 's20'}}
       />
 
       <Text

@@ -3,12 +3,13 @@ import {ScrollView, View} from 'react-native';
 
 interface Props {
   children: React.ReactNode;
-  backgroundColor?: string;
+  backgroundColor: string;
 }
-
 export function ScrollViewContainer({children, backgroundColor}: Props) {
   return (
-    <ScrollView keyboardShouldPersistTaps="handled" style={{backgroundColor}}>
+    <ScrollView
+      keyboardShouldPersistTaps="handled"
+      style={{backgroundColor, flex: 1}}>
       {children}
     </ScrollView>
   );

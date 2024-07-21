@@ -1,29 +1,25 @@
-import React from 'react';
-import {Screen} from '../../../components/Screen/Screen';
-import {Text} from '../../../components/Text/Text';
-import {TextInput} from '../../../components/TextInput/TextInput';
-import {Button} from '../../../components/Button/Button';
+import {zodResolver} from '@hookform/resolvers/zod';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../../routes/Routes';
-import {useResetNavigationSuccess} from '../../../hooks/useResetNavigationSuccess';
+import React from 'react';
+import {useForm} from 'react-hook-form';
+import {Button, FormTextInput, Screen, Text} from '@components';
+import {RootStackParamList} from '@routes';
+import {useResetNavigationSuccess} from '@hooks';
 
 import {
   ForgotPasswordSchema,
   forgotPasswordSchema,
 } from './forgotPasswordSchema';
-import {useForm} from 'react-hook-form';
-import {zodResolver} from '@hookform/resolvers/zod';
-import {FormTextInput} from '../../../components/Form/FormTextInput';
 
 type ScreenProps = NativeStackScreenProps<
   RootStackParamList,
   'ForgotPasswordScreen'
 >;
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function ForgotPasswordScreen({navigation}: ScreenProps) {
   const {reset} = useResetNavigationSuccess();
 
-  const {control, handleSubmit, formState} = useForm<ForgotPasswordSchema>({
+  const {control, formState, handleSubmit} = useForm<ForgotPasswordSchema>({
     resolver: zodResolver(forgotPasswordSchema),
     defaultValues: {
       email: '',
@@ -32,11 +28,9 @@ export function ForgotPasswordScreen({navigation}: ScreenProps) {
   });
 
   function submitForm(values: ForgotPasswordSchema) {
-    // TODO: Implementar
     console.log(values);
-
     reset({
-      title: 'Enviamos as instruções \npara seu e-mail',
+      title: `Enviamos as instruções ${'\n'}para seu e-mail`,
       description:
         'Clique no link enviado no seu e-mail para recuperar sua senha',
       icon: {
@@ -45,29 +39,27 @@ export function ForgotPasswordScreen({navigation}: ScreenProps) {
       },
     });
   }
-
   return (
     <Screen canGoBack>
-      <Text preset="headingLarge" mt="s24">
+      <Text preset="headingLarge" mb="s16">
         Esqueci minha senha
       </Text>
-      <Text preset="paragraphLarge" mt="s16">
+      <Text preset="paragraphLarge" mb="s32">
         Digite seu e-mail e enviaremos as instruções para redefinição de senha
       </Text>
 
       <FormTextInput
         control={control}
         name="email"
-        label="Email"
+        label="E-mail"
         placeholder="Digite seu e-mail"
-        boxProps={{mt: 's32', mb: 's20'}}
+        boxProps={{mb: 's40'}}
       />
 
       <Button
         disabled={!formState.isValid}
         onPress={handleSubmit(submitForm)}
         title="Recuperar senha"
-        mt="s48"
       />
     </Screen>
   );
