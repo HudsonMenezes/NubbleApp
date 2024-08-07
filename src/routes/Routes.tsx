@@ -11,6 +11,8 @@ import {
   SuccessScreen,
 } from '@screens';
 
+import {AppStack} from './AppStack';
+
 export type RootStackParamList = {
   LoginScreen: undefined;
   SignUpScreen: undefined;
@@ -24,22 +26,28 @@ export type RootStackParamList = {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export function Router() {
+  const authenticated = true;
+
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-          fullScreenGestureEnabled: true,
-        }}
-        initialRouteName="LoginScreen">
-        <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
-        <Stack.Screen name="SuccessScreen" component={SuccessScreen} />
-        <Stack.Screen
-          name="ForgotPasswordScreen"
-          component={ForgotPasswordScreen}
-        />
-      </Stack.Navigator>
+      {authenticated ? (
+        <AppStack />
+      ) : (
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+            fullScreenGestureEnabled: true,
+          }}
+          initialRouteName="LoginScreen">
+          <Stack.Screen name="LoginScreen" component={LoginScreen} />
+          <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+          <Stack.Screen name="SuccessScreen" component={SuccessScreen} />
+          <Stack.Screen
+            name="ForgotPasswordScreen"
+            component={ForgotPasswordScreen}
+          />
+        </Stack.Navigator>
+      )}
     </NavigationContainer>
   );
 }
