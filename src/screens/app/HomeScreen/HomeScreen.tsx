@@ -6,7 +6,7 @@ import {Post, postService} from '@domain';
 import {Box, Screen, Text} from '@components';
 import {AppTabScreenProps} from '@routes';
 
-export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
+export function HomeScreen({}: AppTabScreenProps<'HomeScreen'>) {
   const [postList, setPostList] = useState<Post[]>([]);
 
   useEffect(() => {
