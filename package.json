@@ -44,6 +44,9 @@
     "react-test-renderer": "18.2.0",
     "typescript": "4.8.4"
   },
+  "peerDependencies": {
+    "flipper-plugin": "*"
+  },
   "jest": {
     "preset": "react-native"
   }
