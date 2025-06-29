@@ -1,22 +1,18 @@
-import {PageAPI} from '@api';
+import {PageAPI} from '../../api/apiTypes';
 
 import {PostAPI} from './postTypes';
 
 async function getList(): Promise<PageAPI<PostAPI>> {
-  let response = await fetch('http://127.0.0.1:3333/user/post', {
+  let response = await fetch('http://10.0.2.2:3333/user/post', {
     method: 'GET',
     headers: {
       Authorization:
-        'Bearer Mg.xWl7KDhBa5KL-9OxRkyYShJnZCAIhJ5rSyU2feCQqsYhbhgbWyCaTtyQvLvu',
+        'Bearer Mw.GdHtNGUzxlmSnY8UTxP5tNkf9gt0bimQSR8Cj2pJrg5cvwCC41SGdqvMqdsc',
     },
   });
 
   let data: PageAPI<PostAPI> = await response.json();
-
   return data;
-
-  // await new Promise(resolve => setTimeout(() => resolve(''), 1000));
-  // return postListMock;
 }
 
 export const postApi = {
