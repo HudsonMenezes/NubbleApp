@@ -2,7 +2,6 @@ import {useEffect, useState} from 'react';
 
 import {postService} from '../postService';
 import {Post} from '../postTypes';
-import {set} from 'react-hook-form';
 
 export function usePostList() {
   const [postList, setPostList] = useState<Post[]>([]);
@@ -33,7 +32,9 @@ export function usePostList() {
   }
 
   async function fetchNexPage() {
-    if (loading || !hasNextPage) return;
+    if (loading || !hasNextPage) {
+      return;
+    }
 
     try {
       setLoading(true);
@@ -53,7 +54,6 @@ export function usePostList() {
 
   useEffect(() => {
     fetchInitialData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {loading, error, postList, refresh: fetchInitialData, fetchNexPage};
