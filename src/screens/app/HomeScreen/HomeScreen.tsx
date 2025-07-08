@@ -8,13 +8,13 @@ import {
 } from 'react-native';
 
 import {Post, usePostList} from '@domain';
+import {useScrollToTop} from '@react-navigation/native';
 
 import {PostItem, Screen} from '@components';
 import {AppTabScreenProps} from '@routes';
 
 import {HomeEmpty} from './components/HomeEmpty';
 import {HomeHeader} from './components/HomeHeader';
-import {useScrollToTop} from '@react-navigation/native';
 
 export function HomeScreen({}: AppTabScreenProps<'HomeScreen'>) {
   const {error, loading, refresh, postList, fetchNexPage} = usePostList();
