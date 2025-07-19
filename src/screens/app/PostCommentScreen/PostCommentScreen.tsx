@@ -1,9 +1,7 @@
 import {Box, Screen, Text} from '@components';
 import {AppScreenProps} from '@routes';
 
-export function PostCommentScreen({
-  route,
-}: AppScreenProps<'PostCommentScreen'>) {
+export function PostCommentScreen({}: AppScreenProps<'PostCommentScreen'>) {
   return (
     <Screen title="Comentários" canGoBack>
       <Box>
