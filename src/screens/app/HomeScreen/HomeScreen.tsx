@@ -33,7 +33,7 @@ export function HomeScreen({}: AppTabScreenProps<'HomeScreen'>) {
         showsVerticalScrollIndicator={false}
         // data={[]}
         data={postList}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.id.toString()}
         renderItem={renderItem}
         onEndReached={fetchNexPage}
         onEndReachedThreshold={0.1}
